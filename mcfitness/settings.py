@@ -111,7 +111,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mcfitness.wsgi.application'
 
-# Database
+'''# Database
 # [START db_setup]
 # [START gaestd_py_django_database_config]
 # Use django-environ to parse the connection string
@@ -123,17 +123,26 @@ if os.getenv("USE_CLOUD_SQL_AUTH_PROXY", None):
     DATABASES["default"]["PORT"] = 5432
 
 # [END gaestd_py_django_database_config]
-# [END db_setup]
-'''
-# Use a in-memory sqlite3 database when testing in CI systems
-if os.getenv("TRAMPOLINE_CI", None):
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+# [END db_setup'''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mcfit',
+        'USER': 'Mario',
+        'PASSWORD': 'L6e8L43XE24jQvW98',
+        # https://console.cloud.google.com/sql/instances
+        'HOST': '35.238.143.153',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'verify-ca', 
+            #Change to your own local locations
+            'sslrootcert': 'F:\Capstone\certs\server-ca.pem',
+            "sslcert": "F:\Capstone\certs\client-cert.pem",
+            "sslkey": "F:\Capstone\certs\client-key.pem",
         }
     }
-'''
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
