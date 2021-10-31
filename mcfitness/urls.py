@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 import MCFit
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', include('MCFit.urls')),
     path('accounts/', include('allauth.urls')),
 ]
