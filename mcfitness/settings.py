@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'rest_framework',   
-    'MCFit.apps.McfitConfig',
+    'frontend.apps.frontendConfig',
 ]
 
 SITE_ID = 1
