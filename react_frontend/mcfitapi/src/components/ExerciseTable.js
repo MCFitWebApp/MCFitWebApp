@@ -1,6 +1,6 @@
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Paper from '@material-ui/core/Paper';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,11 +13,18 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import axios from "axios";
 import PropTypes from 'prop-types';
 import React, { Fragment, useEffect, useState } from 'react';
-import ReadOnlyRow from "../components/ReadOnlyRow";
 import EditableRow from '../components/EditableRow';
+import ReadOnlyRow from "../components/ReadOnlyRow";
 
 
-
+    /*
+    PURPOSE: Create an exercise table that has all of the exercises and is capable of being edited,deleted,etc
+    PARAMS: None
+    RETURNS: None
+    PRE: None
+    Note: Wasn't used as the design does not look good and a proper design was never given. Code works as intended
+    
+    */
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {

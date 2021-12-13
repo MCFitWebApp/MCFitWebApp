@@ -1,9 +1,14 @@
 
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
-
+    /*
+    PURPOSE: Adds a new exercise to the exercise database
+    PARAMS: None
+    RETURNS: None
+    PRE: Form fields must be filled and valid
+    */
 const AddExercise = () => {
 
     let history = useHistory();

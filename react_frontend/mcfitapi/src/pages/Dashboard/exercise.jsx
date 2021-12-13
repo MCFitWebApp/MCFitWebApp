@@ -1,12 +1,10 @@
-import React, { Component, useState, useEffect, Fragment} from 'react';
-import { render } from 'react-dom';
-import { Link } from "react-router-dom";
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import PrintIcon from '@mui/icons-material/Print';
+import { createTheme } from '@mui/material/styles';
+import axios from 'axios';
+import React, { Fragment, useEffect, useState } from 'react';
+import Cookies from 'universal-cookie';
 import Sidebar from '../../components/Sidebar';
 import StaffSidebar from '../../components/TrainerSidebar';
-import Cookies from 'universal-cookie';
-import PrintIcon from '@mui/icons-material/Print';
-import axios from 'axios';
 //Stylesheet
 import './exercise.css';
 const cookies = new Cookies();
@@ -30,6 +28,12 @@ const theme = createTheme({
         window.print()
     }
     const [workoutDesc, setworkoutDesc] = useState([]);
+    /*
+    PURPOSE: Retrieves the information for a workout
+    PARAMS: None
+    RETURNS: None
+    PRE: None
+    */
     const getWorkoutDesc = async () => {
         let workout = props.location.clientProp
         if (workout === undefined || workout === null || workout === "") {
@@ -49,6 +53,12 @@ const theme = createTheme({
         }
     };
 
+    /*
+    PURPOSE: Converts the youtube video into a format that iframe can use to create an embedded link
+    PARAMS: url of youtube video
+    RETURNS: usable link for iframe
+    PRE: Workout info must include a video
+    */
     function getId(url) {
         url = url.toString()
         var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -75,7 +85,7 @@ const theme = createTheme({
                 Fitness
             </div>
             <Fragment>
-                {workoutDesc.video === "" || workoutDesc.video === undefined ? null : (
+                {workoutDesc.video === "" || workoutDesc.video === undefined ? null : ( //Checking if a video is included for the exercise and embedding it if it exists
                 <div className="exercise-video">
                 <iframe 
                 width="150%" 
@@ -99,7 +109,7 @@ const theme = createTheme({
                     <span style={{fontWeight: '700'}}>Targeted area: &nbsp;</span>{workoutDesc.muscle} <br/><br/>
                     <span style={{fontWeight: '700'}}>How to do this exercise: &nbsp;</span>
                     
-                    {workoutDesc.instructions === "" || workoutDesc.instructions === undefined ? null : (
+                    {workoutDesc.instructions === "" || workoutDesc.instructions === undefined ? null : (  //Checking if the exercise in the database includes instructions
                     workoutDesc.instructions.replace(/\\n/g, '').replace(/(?:\\(.))/g, '') )} <br/><br/>
                 </div>
             </div>

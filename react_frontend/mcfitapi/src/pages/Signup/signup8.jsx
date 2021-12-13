@@ -1,15 +1,14 @@
-import React, { Component,useState } from 'react'
-import './signup.css'
-import { Link } from "react-router-dom";
 import { Button } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-//Components
-import Header from '../../components/HeaderW'
-import Cookies from 'universal-cookie'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
-import { Redirect, useHistory } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+//Components
+import Header from '../../components/HeaderW';
+import './signup.css';
 
 const theme = createTheme({
     palette: {
@@ -32,6 +31,12 @@ const theme = createTheme({
 
     const cookies = new Cookies();
 
+    /*
+    PURPOSE: On sign up completion a post request is sent to the database in order to add the user to the back-end of the server
+    PARAMS: event
+    RETURNS: Redirection to newly created home page for the signed up user on success and a error log on failure
+    PRE: All forms are complete
+    */
     const createProfile = async (e) => {
         e.preventDefault()
         await axios({

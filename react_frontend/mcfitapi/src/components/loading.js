@@ -1,10 +1,17 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import Sidebar from '../components/TrainerSidebar';
-import '../pages/Dashboard/Trainer/clients.css'
-import { Box, TextField } from '@mui/material/';
-import axios from "axios";
+import { Box } from '@mui/material/';
 import CircularProgress from '@mui/material/CircularProgress';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import Sidebar from '../components/TrainerSidebar';
+import '../pages/Dashboard/Trainer/clients.css';
 
+
+    /*
+    PURPOSE: Displays a loading circle while the system retrieves the client data for the client page
+    PARAMS: None
+    RETURNS: None
+    PRE: None
+    */
 export default function Loading(props) {
 
   const [profiles,setProfiles] = useState([]);
@@ -25,6 +32,7 @@ export default function Loading(props) {
     this.height = 'N/A';
     this.weight = 'N/A';
   }
+
 
   const getProfileData = async () => {
     try {

@@ -1,7 +1,5 @@
 import { createTheme } from '@mui/material/styles';
 import React, { useState } from "react";
-import axios from 'axios';
-import Cookies from 'universal-cookie'
 //Stylesheet
 import './signup.css';
 import Signup1 from './signup1';
@@ -53,7 +51,7 @@ const Signup = () => {
   const {phone_num,address,emergency_contact,fitness_goal,gender,weight,dob,height,physical_activity,diet} = formData;
 
   
-
+  // Switching the step the user is on changes the state of the page. Each step represents a part of the sign up process
   switch(step) {
     case 1:
       return(

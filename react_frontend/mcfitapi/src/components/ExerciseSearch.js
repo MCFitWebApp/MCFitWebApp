@@ -1,8 +1,15 @@
+import CloseIcon from "@material-ui/icons/Close";
+import SearchIcon from "@material-ui/icons/Search";
 import React, { useState } from "react";
 import "./ExerciseSearch.css";
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
-import axios from "axios";
+
+
+    /*
+    PURPOSE: Search field for finding exercises based on user search
+    PARAMS: None
+    RETURNS: A filtered list pertaining to the searched item
+    PRE: None
+    */
 function ExerciseSearch(props) {
 
   const [filteredData, setFilteredData] = useState([]);

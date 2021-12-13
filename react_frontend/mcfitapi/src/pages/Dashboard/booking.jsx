@@ -1,21 +1,19 @@
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+import interactionPlugin from '@fullcalendar/interaction'
+import listPlugin from '@fullcalendar/list'
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import { AccessTimeFilled, Description, LocationOn } from '@mui/icons-material/'
+import { Box, Button, MenuItem, Modal, Select, TextField } from '@mui/material'
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import FullCalendar from '@fullcalendar/react' // must go before plugins
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import timeGridPlugin from '@fullcalendar/timegrid'
-import listPlugin from '@fullcalendar/list'
-import { Button, Modal, Box, Typography, Select, MenuItem, TextField } from '@mui/material';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { getBookableTimes, bookEvent, getBookings, cancelBooking, getBookingsByUser } from '../../components/booking'
-import Sidebar from '../../components/Sidebar';
-import Sagenda from '../../static/img/sagenda.png';
-import MiniCalendar from '../../components/MiniCalendar';
+import Cookies from 'universal-cookie'
+import { bookEvent, cancelBooking, getBookableTimes, getBookingsByUser } from '../../components/booking'
+import MiniCalendar from '../../components/MiniCalendar'
+import Sidebar from '../../components/Sidebar'
+import Sagenda from '../../static/img/sagenda.png'
 import './booking.css'
-import interactionPlugin from '@fullcalendar/interaction'
-import { AccessTimeFilled, Description, Event, LocationOn } from '@mui/icons-material/';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import { fetchFood, getFood } from '../../actions/fat-secret'; 
 
 var myToken;
     
